@@ -1,9 +1,17 @@
-import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const App = () => {
+import Layout from './components/Layout'
+import AppRoutes from './routes'
+import { CartProvider } from './components/context/CartContext'
+
+export default function App() {
   return (
-    <div>App</div>
+    <CartProvider>
+      <Router>
+        <Layout>
+          <AppRoutes />
+        </Layout>
+      </Router>
+    </CartProvider>
   )
 }
-
-export default App
