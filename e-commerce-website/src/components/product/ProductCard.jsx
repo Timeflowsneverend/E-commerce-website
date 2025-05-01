@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
 import Button from '../ui/Button'
-import Rating from './Rating'
+
 import { useCart } from '../context/CartContext'
+import Rating from './Rating'
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart()
