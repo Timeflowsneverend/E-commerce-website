@@ -40,7 +40,7 @@ export default function Navbar() {
               />
             </svg>
             {itemCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-primary-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-primary-500 text-white bg-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {itemCount}
               </span>
             )}

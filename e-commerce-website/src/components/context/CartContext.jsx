@@ -16,7 +16,9 @@ export function CartProvider({ children }) {
   }, [cart]);
 
   const addToCart = (product, quantity = 1) => {
+    console.log("----",product)
     setCart(prev => {
+      console.log(prev,"---->>")
       const existingItem = prev.find(item => item.id === product.id);
       if (existingItem) {
         return prev.map(item =>
@@ -54,6 +56,7 @@ export function CartProvider({ children }) {
 
   const value = {
     cart,
+    setCart,
     addToCart,
     removeFromCart,
     updateQuantity,
@@ -61,9 +64,10 @@ export function CartProvider({ children }) {
     cartTotal,
     itemCount: cart.reduce((sum, item) => sum + item.quantity, 0),
   };
+  console.log(cart,"--------")
 
   // 3. Return the provider with the value
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return <CartContext value={value}>{children}</CartContext>;
 }
 
 // 4. Create the custom hook

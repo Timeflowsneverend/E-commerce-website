@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { ArrowLeft, CreditCard, MapPin, ShoppingCart, X } from 'lucide-react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, MapPin, CreditCard, ShoppingCart, X } from 'lucide-react';
+import { useCart } from '../components/context/CartContext';
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
   
   // Cart state (would typically come from context/state management)
-  const [cart, setCart] = useState(() => {
-    // Load cart from localStorage if available
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const {cart, setCart}= useCart()
 
   // Shipping form state
   const [shippingInfo, setShippingInfo] = useState({
@@ -28,10 +25,7 @@ const CheckoutPage = () => {
 
   const [errors, setErrors] = useState({});
 
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -121,8 +115,10 @@ const CheckoutPage = () => {
               </div>
 
               <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
+                <div 
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div
+                  >
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
                       First Name *
                     </label>
@@ -238,7 +234,7 @@ const CheckoutPage = () => {
                 <CreditCard className="h-5 w-5 mr-2" />
                 Proceed to Payment
               </button>
-            </div>
+                  </div>
           </div>
         </div>
       )}
